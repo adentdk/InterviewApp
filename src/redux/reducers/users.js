@@ -44,14 +44,6 @@ export default function users(state = initialState, action){
             id : action.payload.data.data.id
         }
 
-        case "USER_FULFILED" : 
-        return {
-            ...state,
-            isLoading : false,
-            isSuccess : true,
-            id : action.payload.data.data.id
-        }
-
         default:
         return state
     }
