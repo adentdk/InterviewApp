@@ -1,12 +1,12 @@
 import { createNavigationReducer } from 'react-navigation-redux-helpers';
 import RootNavigation from './../../navigations/RootNavigation';
-import example from './example';
+import users from './users';
 
 const router = createNavigationReducer(RootNavigation);
 
 const appReducer = {
   router,
-  example,
+  users
 }
 
 export default appReducer

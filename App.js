@@ -25,6 +25,7 @@ class App extends Component {
 
   render(){
     YellowBox.ignoreWarnings(['Warning: Async Storage has been extracted from react-native core']);  // <- insert the warning text here you wish to hide.
+    YellowBox.ignoreWarnings(['Warning: Possible Unhandled Promise Rejection']);  // <- insert the warning text here you wish to hide.
     return (  
       <Provider store={store}>
         <PersistGate loading={<ActivityIndicator />} persistor={persistor}>

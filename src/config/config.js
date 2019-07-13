@@ -1,5 +1,5 @@
 export const url = {
-    server : 'http://192.168.0.18/'
+    server : 'http://192.168.1.122:3333/'
 }
 
 export const color = {

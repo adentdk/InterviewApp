@@ -1,10 +1,14 @@
 import {StyleSheet} from 'react-native'
+import {color} from './../config/config'
 export const globalStyles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
+      justifyContent: 'space-between',
+      backgroundColor:color.primary,
+      color:color.light
     },
     containerTransparent: {
         flex: 1,
@@ -21,6 +25,7 @@ export const globalStyles = StyleSheet.create({
       fontSize: 20,
       textAlign: 'center',
       margin: 10,
+      color:color.light
     },
     note: {
       textAlign: 'center',
