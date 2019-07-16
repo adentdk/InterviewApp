@@ -12,6 +12,7 @@ import Loading from '../components/Loading'
 
 import TextAnswerSheet from './components/TextAnswerSheet'
 import MultipleChoiceAnswerSheet from './components/MultipleChoiceAnswerSheet'
+import MultipleSelectAnswerSheet from './components/MultipleSelectAnswerSheet'
 import VideoAnswerSheet from './components/VideoAnswerSheet'
 
 class Question extends Component {
@@ -61,7 +62,7 @@ class Question extends Component {
         )
       case "multiple select":
         return (
-          <MultipleChoiceAnswerSheet changeState={this.changeState} choice={this.props.questions.data.options} type={"multiple select"}  />
+          <MultipleSelectAnswerSheet changeState={this.changeState} choice={this.props.questions.data.options} type={"multiple select"}  />
         )
       case "video record":
         return (
@@ -69,7 +70,7 @@ class Question extends Component {
         )
       default:
         return (
-          <Loading />
+          <View />
         )
     }
   }
@@ -87,7 +88,7 @@ class Question extends Component {
       isLoading : true,
       number : this.state.number + 1
     })
-    this.props.getQuestion(this.state.number)
+    this.loadData(this.state.number)
   }
 
   SubmitQuestion = () => {

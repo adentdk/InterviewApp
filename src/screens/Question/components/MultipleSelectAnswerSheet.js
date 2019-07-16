@@ -11,45 +11,44 @@ export default class MultipleChoiceAnswerSheet extends Component {
 
     state = {
         selected: 0,
+        selectedItems: [],
         choice: []
     }
-    componentDidMount =  async () => {
+    componentDidMount() {
         let choice = []
-        await this.props.choice.split(',').map((item, key) => {
-            choice.push({ label: item, value: key })
-        })
         this.setState({
             choice: choice
         })
-    }
-
-    handleRadioClick = (selected) => {
-        this.setState({
-            selected: selected
+        this.props.choice.split(',').map((item, key) => {
+            choice.push({ label: item, value: key })
         })
-
-        console.log(this.state.choice);
-        
-        this.props.changeState('answer', this.state.choice[selected].label)
+    }
+    onSelectionsChange = (selectedItems) => {
+        let selected = ""
+        this.setState({
+            selectedItems
+        })
+        selectedItems.map(item => {
+            selected += item.label + ", "
+        })
+        this.props.changeState('answer', selected)
     }
 
     render() {
-        let { choice } = this.state
-
+        let { selectedItems, choice } = this.state
         return (
+
             <View style={{ flex: 1, height: '100%', width: '100%' }}>
                 {
                     (choice.length == 0) ?
                         <View />
                         :
-                        <RadioForm
-                            radio_props={choice}
-                            initial={0}
-                            onPress={(selected) => this.handleRadioClick(selected)}
-                        />
+                        <SelectMultiple
+                            items={choice}
+                            selectedItems={selectedItems}
+                            onSelectionsChange={this.onSelectionsChange} />
                 }
             </View>
         )
-
     }
 }
