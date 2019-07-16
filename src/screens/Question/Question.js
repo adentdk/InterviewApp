@@ -12,6 +12,7 @@ import Loading from '../components/Loading'
 
 import TextAnswerSheet from './components/TextAnswerSheet'
 import MultipleChoiceAnswerSheet from './components/MultipleChoiceAnswerSheet'
+import VideoAnswerSheet from './components/VideoAnswerSheet'
 
 class Question extends Component {
 
@@ -54,17 +55,17 @@ class Question extends Component {
         return (
           <TextAnswerSheet changeState={this.changeState} />
         )
-      case "multipe choice":
+      case "multiple choice":
         return (
-          <MultipleChoiceAnswerSheet changeState={this.changeState} choice={this.props.questions.data.options} />
+          <MultipleChoiceAnswerSheet changeState={this.changeState} choice={this.props.questions.data.options} type={"multiple choice"}  />
         )
       case "multiple select":
         return (
-          <MultipleChoiceAnswerSheet changeState={this.changeState} choice={this.props.questions.data.options} />
+          <MultipleChoiceAnswerSheet changeState={this.changeState} choice={this.props.questions.data.options} type={"multiple select"}  />
         )
       case "video record":
         return (
-          <Text>type video record</Text>
+          <VideoAnswerSheet changeState={this.changeState} />
         )
       default:
         return (
