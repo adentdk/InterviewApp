@@ -77,7 +77,7 @@ class Register extends Component {
                 <View style={globalStyles.container}>
                     <View style={styles.formWrapper} >
                         <Input placeholder={"Your name"}
-                            placeholderTextColor={color.light}
+                            placeholderTextColor={"rgba(255,255,255,0.4)"}
                             style={{ color: color.light }}
                             inputStyle={{ color: color.light}}
                             containerStyle={{ marginBottom: 10}}
@@ -87,10 +87,12 @@ class Register extends Component {
                                     name: text
                                 })
                             }}
+                            rightIconContainerStyle={{backgroundColor:"rgba(255,255,255,.1)", paddingHorizontal:7, marginBottom:-5}}
+                            rightIcon={{name: "user", type:"antdesign", color:color.light}}
                         />
 
                         <Input placeholder={"Your email"}
-                            placeholderTextColor={color.light}
+                            placeholderTextColor={"rgba(255,255,255,0.4)"}
                             style={{ color: color.light }}
                             keyboardType={"email-address"}
                             inputStyle={{ color: color.light}}
@@ -101,10 +103,12 @@ class Register extends Component {
                                     email: text
                                 })
                             }}
+                            rightIconContainerStyle={{backgroundColor:"rgba(255,255,255,.1)", paddingHorizontal:7, marginBottom:-5}}
+                            rightIcon={{name: "mail", type:"antdesign", color:color.light}}
                         />
 
                         <Input placeholder={"Your phone number"}
-                            placeholderTextColor={color.light}
+                            placeholderTextColor={"rgba(255,255,255,0.4)"}
                             style={{ color: color.light }}
                             keyboardType={"phone-pad"}
                             inputStyle={{ color: color.light}}
@@ -115,6 +119,8 @@ class Register extends Component {
                                     phone_number: text
                                 })
                             }}
+                            rightIconContainerStyle={{backgroundColor:"rgba(255,255,255,.1)", paddingHorizontal:7, marginBottom:-5}}
+                            rightIcon={{name: "phone", type:"antdesign", color:color.light}}
                         />
 
                     </View>
