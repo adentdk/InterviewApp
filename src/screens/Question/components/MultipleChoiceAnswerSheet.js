@@ -21,6 +21,7 @@ export default class MultipleChoiceAnswerSheet extends Component {
         this.setState({
             choice: choice
         })
+        this.props.changeState('answer', this.state.choice[0].label)
     }
 
     handleRadioClick = (selected) => {

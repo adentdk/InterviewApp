@@ -80,7 +80,7 @@ class Question extends Component {
   nextQuestion = async () => {
     this.props.submitAnswer({
       question_id: this.props.questions.data.id,
-      user_id: this.props.user_id,
+      user_id: this.props.user.id,
       answer: this.state.answer,
       attachment: this.state.attachment
     })
@@ -136,7 +136,7 @@ class Question extends Component {
             <CountDown until={this.props.questions.data.timer * 60}
               onFinish={ this.handleTimeOut }
               size={14}
-              digitStyle={{ backgroundColor: 'transparent',padding:0,margin:0, }}
+              digitStyle={{ backgroundColor: 'transparent',marginTop:-5}}
               digitTxtStyle={{ color: 'black' }}
               timeToShow={['M', 'S']}
               timeLabels={{m: null, s: null}} />
@@ -165,6 +165,12 @@ class Question extends Component {
               containerStyle={{ width: '100%', height: 60 }}
               buttonStyle={{ borderColor: color.light, height: 60, backgroundColor: color.primary }}
               titleStyle={{ color: color.light }}
+              disabled={
+                (this.state.answer === '') ?
+                true
+                :
+                false
+              }
               onPress={() => {
                 this.nextQuestion()
               }} />
@@ -180,7 +186,7 @@ class Question extends Component {
 const mapStateToProps = state => {
   return {
     questions: state.questions,
-    user_id: state.users.id,
+    user: state.users,
   }
 }
 
