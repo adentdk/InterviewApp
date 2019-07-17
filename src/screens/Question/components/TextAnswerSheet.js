@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import { Button, Input } from 'react-native-elements'
-import { globalStyles } from '../../../styles/globalStyles'
 
 
 export default class TextAnswerSheet extends Component {

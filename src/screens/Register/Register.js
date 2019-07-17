@@ -19,14 +19,14 @@ class Register extends Component {
             email: '',
             phone_number: '',
             isLoading: false,
-            isError : false,
-            isSuccess : false
+            isError: false,
+            isSuccess: false
         }
     }
 
     register = async () => {
         this.setState({
-            isLoading : true
+            isLoading: true
         })
 
         await this.props.register({
@@ -40,78 +40,90 @@ class Register extends Component {
 
     cekRegister = async () => {
 
-        if(this.props.users.isError){
+        if (this.props.users.isError) {
             Alert.alert('Failed',
-            'something went wrong')
+                'something went wrong')
 
             this.setState({
-                isLoading : false,
+                isLoading: false,
             })
 
             this.props.defaultValue()
         }
-        if(this.props.users.isSuccess){
-           this.props.defaultValue()
-           this.props.navigation.navigate("Authenticated")
-           this.setState({
-                isLoading : false,
+        if (this.props.users.isSuccess) {
+            this.props.defaultValue()
+            this.props.navigation.navigate("Authenticated")
+            this.setState({
+                isLoading: false,
             })
 
         }
     }
-    render() {
-        console.log(this.props.users);
 
+    validasiForm = () => {
+        if(this.state.name == '') return Alert.alert('Failed','name cannot be null')
+        else if(this.state.email == '') return Alert.alert('Failed','email cannot be null')
+        else if(this.state.phone_number == '') return Alert.alert('Failed','phone_number cannot be null')
+        else return this.register()
+    }
+
+    render() {
+        
         this.cekRegister()
         if (this.state.isLoading) {
             return <Loading />
-        }else{
+        } else {
             return (
                 <View style={globalStyles.container}>
                     <View style={styles.formWrapper} >
                         <Input placeholder={"Your name"}
                             placeholderTextColor={color.light}
                             style={{ color: color.light }}
-                            containerStyle={{ marginBottom: 15 }}
+                            inputStyle={{ color: color.light}}
+                            containerStyle={{ marginBottom: 10}}
                             value={this.state.name}
                             onChangeText={(text) => {
                                 this.setState({
-                                    name : text
+                                    name: text
                                 })
                             }}
-                            />
-                                    
+                        />
+
                         <Input placeholder={"Your email"}
                             placeholderTextColor={color.light}
                             style={{ color: color.light }}
-                            containerStyle={{ marginBottom: 15 }}
+                            keyboardType={"email-address"}
+                            inputStyle={{ color: color.light}}
+                            containerStyle={{ marginBottom: 10 }}
                             value={this.state.email}
                             onChangeText={(text) => {
                                 this.setState({
-                                    email : text
+                                    email: text
                                 })
                             }}
-                            />
-                                
+                        />
+
                         <Input placeholder={"Your phone number"}
                             placeholderTextColor={color.light}
                             style={{ color: color.light }}
-                            containerStyle={{ marginBottom: 15 }}
+                            keyboardType={"phone-pad"}
+                            inputStyle={{ color: color.light}}
+                            containerStyle={{ marginBottom: 10 }}
                             value={this.state.phone_number}
                             onChangeText={(text) => {
                                 this.setState({
-                                    phone_number : text
+                                    phone_number: text
                                 })
                             }}
-                            />
-                                
+                        />
+
                     </View>
                     <Button title={"Register"} type={"outline"}
-                        containerStyle={{ width: '100%', height: 60 }}
-                        buttonStyle={{ borderColor: color.light, height: 60 }}
+                        containerStyle={{ width: '100%', height: 50 }}
+                        buttonStyle={{ borderColor: color.light, height: 50 }}
                         titleStyle={{ color: color.light }}
                         onPress={() => {
-                            this.register()
+                            this.validasiForm()
                         }} />
                 </View>
             );
@@ -129,7 +141,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         register: (data) => dispatch(actionUser.register(data)),
-        defaultValue : () => dispatch(actionUser.defaultValue())
+        defaultValue: () => dispatch(actionUser.defaultValue())
     }
 }
 

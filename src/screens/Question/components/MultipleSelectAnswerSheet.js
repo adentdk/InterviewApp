@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList } from 'react-native'
-import { ListItem } from 'react-native-elements'
+import { View } from 'react-native'
 import SelectMultiple from 'react-native-select-multiple'
-import RadioForm from 'react-native-simple-radio-button'
-
-import { globalStyles } from '../../../styles/globalStyles'
 
 
-export default class MultipleChoiceAnswerSheet extends Component {
+export default class MultipleSelectAnswerSheet extends Component {
 
     state = {
         selected: 0,

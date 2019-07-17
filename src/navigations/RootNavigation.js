@@ -1,6 +1,6 @@
 import { createStackNavigator, createAppContainer, createSwitchNavigator } from "react-navigation"
 
-import {color} from '../config/config'
+import { color } from '../config/config'
 
 import Loading from '../screens/Loading/Loading'
 import Welcome from '../screens/Welcome/Welcome'
@@ -20,53 +20,61 @@ const Initial = createStackNavigator({
 
 const UnAuthenticated = createStackNavigator({
     Welcome: {
-        screen : Welcome,
-        navigationOptions : ({navigation}) => ({
+        screen: Welcome,
+        navigationOptions: ({ navigation }) => ({
             header: null
         })
     },
-    Register : {
-        screen : Register,
-        navigationOptions : ({navigation}) => ({
-            title : "Register Yourself",
+    Register: {
+        screen: Register,
+        navigationOptions: ({ navigation }) => ({
+            title: "Register Yourself",
+            headerStyle: {
+                backgroundColor: color.primary,
+            },
+            headerTintColor: color.light,
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
         })
     },
 },
-{
-    initialRouteName: 'Welcome'
-})
+    {
+        initialRouteName: 'Welcome'
+    })
 
 const Authenticated = createStackNavigator({
     InterviewDetail: {
-        screen : InterviewDetail,
-        navigationOptions : ({navigation}) => ({
-            title : "Interview Details",
-             headerStyle: {
-              backgroundColor: color.primary,
+        screen: InterviewDetail,
+        navigationOptions: ({ navigation }) => ({
+            title: "Interview Details",
+            headerStyle: {
+                backgroundColor: color.primary,
             },
-                headerTintColor: color.light,
-                headerTitleStyle: {
-              fontWeight: 'bold',
+            headerTintColor: color.light,
+            headerTitleStyle: {
+                fontWeight: 'bold',
             },
         })
     },
-    Question : {
-        screen : Question,
-        navigationOptions : ({navigation}) => ({
-            title : "Interview Room",
-             headerStyle: {
-              backgroundColor: color.primary,
+    Question: {
+        screen: Question,
+        navigationOptions: ({ navigation }) => ({
+            title: "Interview Room",
+            headerLeft: null,
+            headerStyle: {
+                backgroundColor: color.primary,
             },
-                headerTintColor: color.light,
-                headerTitleStyle: {
-              fontWeight: 'bold',
+            headerTintColor: color.light,
+            headerTitleStyle: {
+                fontWeight: 'bold',
             },
         })
     },
 },
-{
-    initialRouteName: 'InterviewDetail'
-})
+    {
+        initialRouteName: 'InterviewDetail'
+    })
 
 
 
@@ -74,7 +82,7 @@ const RootNavigation = createAppContainer(createSwitchNavigator(
     {
         Initial: Initial,
         UnAuthenticated: UnAuthenticated,
-        Authenticated : Authenticated
+        Authenticated: Authenticated
     },
     {
 
